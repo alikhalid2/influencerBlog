@@ -5,15 +5,15 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./homepage.css";
 
 export default function Homepage() {
-  // const location = useLocation();
-  // console.log(location);
+  const location = useLocation();
+  console.log(location);
   return (
     <>
       <Header />
-      {/* <div className="home">
+      <div className="home">
         <Posts />
         <Sidebar />
-      </div> */}
+      </div>
     </>
   );
 }
