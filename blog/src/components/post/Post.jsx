@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 import "./post.css";
+import React from "react";
+
+export function getCurrentDate(separator=''){
+
+  let newDate = new Date()
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
+  
+  return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+  }
 
 export default function Post({img}) {
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
   return (
     <div className="post">
       <img
@@ -24,17 +38,16 @@ export default function Post({img}) {
         </div>
         <span className="postTitle">
           <Link to="/post/abc" className="link">
-            Lorem ipsum dolor sit amet
+            ----------------------------
           </Link>
         </span>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">{date}</span>
       </div>
       <p className="postDesc">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-        officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-        fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-        atque, exercitationem quibusdam, reiciendis odio laboriosam?
+        ----------------------------------------------------------------------
+        --------------------------------------------------
+        ----------------------------------------------------
       </p>
     </div>
   );
