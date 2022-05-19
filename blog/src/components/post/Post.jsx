@@ -24,7 +24,7 @@ export default function Post({img}) {
         alt=""
       />
       <div className="postInfo">
-        <div className="postCats">
+        {/* <div className="postCats">
           <span className="postCat">
             <Link className="link" to="/posts?cat=Music">
               sw
@@ -35,7 +35,7 @@ export default function Post({img}) {
               plc
             </Link>
           </span>
-        </div>
+        </div> */}
         <span className="postTitle">
           <Link to="/post/abc" className="link">
             ----------------------------
