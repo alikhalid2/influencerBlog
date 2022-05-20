@@ -1,1 +1,2 @@
-# influencerBlog
+# BlogProject
+ Blog Project
