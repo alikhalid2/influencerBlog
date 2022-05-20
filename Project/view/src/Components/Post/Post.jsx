@@ -19,7 +19,9 @@ export default function Post({ post }) {
           {post.categories &&
             post.categories.map((cat) => (
               <span className="postCat" key={cat}>
-                {cat}
+                <Link to={"/?cat=" + cat} className="link">
+                  {cat}
+                </Link>
               </span>
             ))}
         </div>
