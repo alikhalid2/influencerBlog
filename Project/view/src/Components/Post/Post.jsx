@@ -8,7 +8,7 @@ export default function Post({ post }) {
       {post.photo && (
         <img
           className="postImage"
-          src="post.photo"
+          src={"/images/" + post.photo}
           alt="post"
           width="100%"
           height="280px"

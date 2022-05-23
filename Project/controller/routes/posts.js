@@ -74,7 +74,8 @@ router.get("/", async (req, res) => {
   try {
     let posts;
     if (username) {
-      posts = await Post.find({ username });
+      user = await User.findOne({ username });
+      posts = await Post.find({ userID: user._id });
     } else if (catName) {
       posts = await Post.find({
         categories: {
