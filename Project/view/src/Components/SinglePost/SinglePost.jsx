@@ -123,7 +123,7 @@ export default function SinglePost() {
               type="text"
               className="singlePostDescTextarea"
               value={desc}
-              onChange={(event) => setDesc(event.target.innerText)}
+              onChange={(event) => setDesc(event.target.value)}
             ></textarea>
             <button onClick={HandleUpdate} className="singlePostButton">
               Update

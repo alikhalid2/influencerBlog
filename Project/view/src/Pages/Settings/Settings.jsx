@@ -1,27 +1,59 @@
 // importing React
+import axios from "axios";
 import React, { useContext, useState } from "react";
 
 // importing other components
 import SideBar from "../../Components/SideBar/SideBar.jsx";
+import {
+  updateStart,
+  updateSuccess,
+  updateFailure,
+} from "../../Context/Actions.js";
 
 import { Context } from "../../Context/Context";
 // importing style sheet
 import "./settings.css";
 
 export default function Settings() {
-  const { user } = useContext(Context);
+  const { user, dispatch } = useContext(Context);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const newUser = {
+      username: username || user.username,
+      email: email || user.email,
+      password: password || user.password,
+    };
+
+    dispatch(updateStart());
+    try {
+      const res = await axios.put("/users/" + user._id, newUser);
+
+      dispatch(updateSuccess(res.data));
+    } catch (error) {
+      console.log(error);
+      dispatch(updateFailure());
+    }
+  };
+
+  const handleDelete = async (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div className="settings">
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsUpdateTitle">Update Your Acount</span>
-          <span className="settingsDeleteTitle">Delete Account</span>
+          <span className="settingsDeleteTitle" onClick={handleDelete}>
+            Delete Account
+          </span>
         </div>
-        <form className="settingsForm">
+        <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
           <div className="settingsPP">
             <img
@@ -40,21 +72,23 @@ export default function Settings() {
             type="text"
             placeholder="Elkfafy"
             value={username}
-            onClick={(event) => setUsername(event.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
           />
           <label>Email</label>
           <input
             type="email"
             placeholder="elkfafy@gmail.com"
             value={email}
-            onClick={(event) => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <label>Username</label>
           <input
             type="password"
-            onClick={(event) => setPassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
-          <button className="settingsSubmit">Update</button>
+          <button className="settingsSubmit" type="submit">
+            Update
+          </button>
         </form>
       </div>
       <SideBar />

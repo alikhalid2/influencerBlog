@@ -23,6 +23,16 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       required: false,
     },
+    comments: {
+      type: Array,
+      required: false,
+      default: [],
+    },
+    views: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
   },
   { timestamps: true }
 );

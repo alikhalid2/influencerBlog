@@ -33,12 +33,12 @@ export default function Write() {
       } catch (error) {
         console.log(error);
       }
-      try {
-        await axios.post("/posts", newPost);
-        navigate("/");
-      } catch (error) {
-        alert("please add title / description!!!");
-      }
+    }
+    try {
+      await axios.post("/posts", newPost);
+      navigate("/");
+    } catch (error) {
+      alert("please add title / description!!!");
     }
   };
   return (
