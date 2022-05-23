@@ -23,7 +23,6 @@ export default function Write() {
     };
     if (file) {
       const data = new FormData();
-      console.log(file);
       const filename = Date.now() + file.name.replace(/ /g, "");
       data.append("name", filename);
       data.append("file", file);

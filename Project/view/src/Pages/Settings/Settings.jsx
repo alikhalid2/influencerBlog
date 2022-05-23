@@ -8,6 +8,7 @@ import {
   updateStart,
   updateSuccess,
   updateFailure,
+  remove,
 } from "../../Context/Actions.js";
 
 import { Context } from "../../Context/Context";
@@ -15,35 +16,62 @@ import { Context } from "../../Context/Context";
 import "./settings.css";
 
 export default function Settings() {
-  const { user, dispatch } = useContext(Context);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const { user, isFetching, dispatch } = useContext(Context);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (event) => {
+    setError(false);
     event.preventDefault();
     const newUser = {
+      userId: user._id,
       username: username || user.username,
       email: email || user.email,
       password: password || user.password,
     };
 
+    if (file) {
+      try {
+        const data = new FormData();
+        const fileName = Date.now() + "pp.png";
+
+        newUser.profilePic = fileName;
+        data.append("name", fileName);
+        data.append("file", file);
+        axios.post("/upload", data);
+      } catch (error) {
+        setError(true);
+        console.log(error);
+      }
+    }
     dispatch(updateStart());
     try {
       const res = await axios.put("/users/" + user._id, newUser);
-
       dispatch(updateSuccess(res.data));
+      setUsername(res.data.username);
+      setEmail(res.data.email);
     } catch (error) {
       console.log(error);
-      dispatch(updateFailure());
+      setError(true);
+      dispatch(updateFailure(user));
     }
   };
 
   const handleDelete = async (event) => {
     event.preventDefault();
+    try {
+      await axios.delete("/users/" + user._id, {
+        data: { userId: user._id },
+      });
+      dispatch(remove());
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
   };
-
   return (
     <div className="settings">
       <div className="settingsWrapper">
@@ -57,7 +85,11 @@ export default function Settings() {
           <label>Profile Picture</label>
           <div className="settingsPP">
             <img
-              src={"/images/" + user.profilePic}
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : user.profilePic && "/images/" + user.profilePic
+              }
               alt="single post"
               width="70px"
               height="70px"
@@ -65,30 +97,38 @@ export default function Settings() {
             <label htmlFor="fileInput">
               <i className="settingsPPIcon fa-regular fa-circle-user"></i>
             </label>
-            <input type="file" id="fileInput" hidden />
+            <input
+              type="file"
+              id="fileInput"
+              onChange={(event) => setFile(event.target.files[0])}
+              hidden
+            />
           </div>
           <label>Username</label>
           <input
             type="text"
-            placeholder="Elkfafy"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
           <label>Email</label>
           <input
             type="email"
-            placeholder="elkfafy@gmail.com"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-          <label>Username</label>
+          <label>Password</label>
           <input
             type="password"
             onChange={(event) => setPassword(event.target.value)}
           />
-          <button className="settingsSubmit" type="submit">
+          <button
+            className="settingsSubmit"
+            type="submit"
+            disabled={isFetching}
+          >
             Update
           </button>
+          {error && <span className="settingsError">Error has happend!!!</span>}
         </form>
       </div>
       <SideBar />

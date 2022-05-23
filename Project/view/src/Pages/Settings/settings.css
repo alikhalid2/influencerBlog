@@ -78,3 +78,13 @@
   margin-top: 20px;
   cursor: pointer;
 }
+
+.settingsSubmit:disabled {
+  background-color: rgb(0, 214, 214);
+  cursor: not-allowed;
+}
+.settingsError {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}

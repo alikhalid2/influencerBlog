@@ -47,13 +47,15 @@ export default function TopBar() {
         </div>
         <div className="topRight">
           {user ? (
-            <img
-              className="topImg"
-              src={user.profilePic}
-              alt="personal"
-              width="40px"
-              height="40px"
-            />
+            <Link to="/settings" className="link">
+              <img
+                className="topImg"
+                src={"/images/" + user.profilePic}
+                alt="personal"
+                width="40px"
+                height="40px"
+              />
+            </Link>
           ) : (
             <ul className="topList">
               <li className="topListItem">

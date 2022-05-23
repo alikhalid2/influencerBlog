@@ -12,12 +12,14 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch, isFetching } = useContext(Context);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const loginFetching = async () => {};
     loginFetching();
   });
   const submitHandler = async (event) => {
+    setError(false);
     event.preventDefault();
     dispatch(loginStart());
     try {
@@ -27,6 +29,7 @@ export default function Login() {
       });
       dispatch(loginSuccess(res.data));
     } catch (error) {
+      setError(true);
       dispatch(loginFailure());
     }
   };
@@ -56,6 +59,7 @@ export default function Login() {
           Register
         </Link>
       </button>
+      {error && <span className="loginError">Login Failed!!!</span>}
     </div>
   );
 }

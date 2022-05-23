@@ -27,3 +27,7 @@ export const updateSuccess = (user) => ({
 export const updateFailure = () => ({
   type: "UPDATE_FAILURE",
 });
+
+export const remove = () => ({
+  type: "REMOVE",
+});
