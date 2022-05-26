@@ -1,7 +1,7 @@
 .user{
     flex-direction: row;
     margin: 20px;
-   
+    width: 300px;
     display: flex;
    border-radius: 10px;
     border: 2px solid black;
@@ -10,7 +10,7 @@
 }
 
 .userimg {
-    border-radius: 50%;
+    border-radius: 10px;
     object-fit: cover;
 margin: 5px;
 
@@ -18,14 +18,14 @@ margin: 5px;
   }
   .username{
 margin-left: 20px;
-flex: 6;
+/* flex: 6; */
 display: flex;
 align-items: center;
 
 
   }
   .deliticon{
-    flex: 3;
+    /* flex: 3; */
     display: flex;
     align-items: center;
 
