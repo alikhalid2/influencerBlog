@@ -9,15 +9,17 @@ import "./user.css";
 export default function User() {
   return (
     <div className="user">
+      <div className="userimg">
       <img
         src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
         alt="user"
-        width="100px"
-        height="100px"
+        width="40px"
+        height="40px"
       />
-      <p>username</p>
+      </div>
+      <p className="username">username</p>
 
-      <i className="singlePostIcon fa-regular fa-trash-can"></i>
+      <i className="singlePostIcon fa-regular fa-trash-can deliticon"></i>
     </div>
   );
 }
