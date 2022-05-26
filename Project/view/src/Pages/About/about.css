@@ -1,0 +1,27 @@
+.names{
+    font-family: "Lora", sans-serif;
+    list-style: none;
+padding: 5px;
+margin-left: 5px;
+
+}
+.title{
+    text-align: center;
+    font-family: "Lora", sans-serif;
+margin-top: 100px;
+}
+.allnames{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.namslist{
+    margin-bottom: 10px;
+    /* padding: 5px */
+    border: 2px solid black;
+    border-radius: 10px;
+width: 400px;
+    padding: 5px;
+}
