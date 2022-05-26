@@ -14,6 +14,7 @@ import Register from "./Pages/Register/Register.jsx";
 // import style sheet
 import "./app.css";
 import { Context } from "./Context/Context.js";
+import Admin from "./Pages/Admin/Admin.jsx";
 
 function App() {
   const { user } = useContext(Context);
@@ -30,6 +31,7 @@ function App() {
           path="/post/:postId"
           element={user ? <Single /> : <Register />}
         />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,6 @@
+.admin {
+  display: flex;
+}
+.adminSidebar {
+  flex: 3;
+}

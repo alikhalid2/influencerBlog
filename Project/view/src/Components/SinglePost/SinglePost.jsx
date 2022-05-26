@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 
 // importing other components
+import Comments from "../../Components/Comments/Comments.jsx";
 import { Context } from "../../Context/Context.js";
 
 // importing style page
@@ -132,6 +133,7 @@ export default function SinglePost() {
         ) : (
           <p className="singlePostDesc">{post.desc}</p>
         )}
+        <Comments />
       </div>
     </div>
   );
