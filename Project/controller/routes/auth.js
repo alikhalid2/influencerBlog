@@ -12,6 +12,7 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
       password: hashedPass,
       plan: req.body.plan,
+      profilePic: "image-1.jpeg",
     });
 
     const user = await newUser.save();
