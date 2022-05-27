@@ -2,20 +2,19 @@
 import React from "react";
 
 // importing other components
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // importing style sheet
 import "./user.css";
 
-export default function User({ user }) {
-  const navigate = useNavigate();
+export default function User({ user, trigger }) {
   const handleDelete = async (event) => {
     event.preventDefault();
     try {
       await axios.delete("/users/" + user._id, {
         data: { userId: user._id },
       });
-      navigate("/admin?choice=users");
+
+      trigger(user._id);
     } catch (error) {
       console.log(error);
     }

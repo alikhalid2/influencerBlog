@@ -10,17 +10,18 @@ import "./users.css";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
+  const [trigger, setTrigger] = useState("");
   useEffect(() => {
     const fetchUsers = async () => {
       const res = await axios.get("/users");
       setUsers(res.data);
     };
     fetchUsers();
-  }, []);
+  }, [trigger]);
   return (
     <div className="users">
       {users.map((user) => (
-        <User key={user._id} user={user} />
+        <User key={user._id} user={user} trigger={setTrigger} />
       ))}
     </div>
   );

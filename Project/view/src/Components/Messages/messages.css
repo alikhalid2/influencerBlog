@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
 .messages {
-  flex: 9;
   display: flex;
   align-self: start;
   flex-wrap: wrap;
   margin-top: 24px;
 }
-=======
-
->>>>>>> Stashed changes
