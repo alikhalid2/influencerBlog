@@ -33,9 +33,13 @@ router.post("/", async (req, res) => {
     } catch {
       post.comments = [comment._id];
     }
-    const updatedPost = await Post.findByIdAndUpdate(req.body.postID, {
-      $set: post,
-    });
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.body.postID,
+      {
+        $set: post,
+      },
+      { new: true }
+    );
     res.status(200).json({ comment, post: updatedPost });
   } catch (error) {
     console.log(error);

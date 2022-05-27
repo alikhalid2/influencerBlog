@@ -9,6 +9,7 @@ const commentsRoute = require("./routes/Comments");
 const categoryRoute = require("./routes/categories");
 const statisticsRoute = require("./routes/statistics");
 const planRoute = require("./routes/plans");
+const messagesRoute = require("./routes/messages");
 const multer = require("multer");
 const path = require("path");
 
@@ -53,6 +54,7 @@ app.use("/api/categories", categoryRoute);
 app.use("/api/statistics", statisticsRoute);
 app.use("/api/comments", commentsRoute);
 app.use("/api/plans", planRoute);
+app.use("/api/messages", messagesRoute);
 app.listen("5000", () => {
   console.log("Backend is running.");
 });

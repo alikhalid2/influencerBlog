@@ -1,21 +1,20 @@
-.contact{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    flex-direction: column;
-
+.contactContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  flex-direction: column;
 }
-.title{
-    text-align: center;
-    font-family: "Lora", sans-serif;
-margin-top: 100px;
+.contactTitle {
+  text-align: center;
+  font-family: "Lora", sans-serif;
+  margin-top: 100px;
 }
-#comment{
-    width: 500px;
-    height: 300px;
-    display: flex;
-    /* text-align: center; */
+.contactMessage {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  /* text-align: center; */
   /* align-items: center; */
   font-size: 20px;
   border-radius: 10px;
@@ -23,8 +22,8 @@ margin-top: 100px;
 
   padding: 10px;
 }
-.butsend{
-    cursor: pointer;
+.contactButton {
+  cursor: pointer;
   background-color: lightcoral;
   border: none;
   color: white;
