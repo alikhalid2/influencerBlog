@@ -14,7 +14,7 @@ import "./singlePost.css";
 export default function SinglePost() {
   const location = useLocation();
   const postID = location.pathname.split("/")[2];
-  const [post, setPost] = useState({ comments: [] });
+  const [post, setPost] = useState({ comments: [], _id: "" });
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
@@ -64,7 +64,6 @@ export default function SinglePost() {
     };
     fetchPost(postID);
   }, [postID]);
-  console.log(post);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">

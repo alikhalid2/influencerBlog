@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./admin.css";
 
 export default function Admin() {
-  const choice = useLocation().search.split("=")[1];
+  const choice = useLocation().search.split("=")[1] || "statistics";
   return (
     <div className="admin">
       <div className="adminSidebar">

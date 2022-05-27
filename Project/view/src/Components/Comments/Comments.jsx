@@ -20,7 +20,7 @@ export default function Comments({ comments, postID }) {
         content: comment,
       };
       const res = await axios.post("/comments", { ...newComment, postID });
-      comments.push(res.data.comment);
+      comments.push(res.data.comment._id);
       setComment("");
     } catch (error) {
       console.log(error);
@@ -42,7 +42,7 @@ export default function Comments({ comments, postID }) {
       </div>
       <div className="commentsContainer">
         {comments.map((c) => (
-          <Comment key={c._id} commentID={c._id} />
+          <Comment key={c} commentID={c} />
         ))}
       </div>
     </div>

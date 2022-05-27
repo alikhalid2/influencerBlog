@@ -25,20 +25,21 @@ export default function Comment({ commentID }) {
     };
     fetchComment();
   }, []);
-
   return (
     <div className="comment">
       <div className="commentHeader">
-        <img
-          className="commentImage"
-          src={comment.profilePic}
-          alt="comment"
-          width="40px"
-          height="40px"
-        />
+        {comment.profilePic && (
+          <img
+            className="commentImage"
+            src={"/images/" + comment.profilePic}
+            alt="comment"
+            width="40px"
+            height="40px"
+          />
+        )}
         <span className="commentUsername">{comment.username}</span>
         <span className="commentDate">
-          {new Date(comment.createdAt).toDateString}
+          {new Date(comment.createdAt).toDateString()}
         </span>
       </div>
       <p className="commentContent">{comment.content}</p>

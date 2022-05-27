@@ -22,13 +22,15 @@ export default function User({ user }) {
   };
   return (
     <div className="user">
-      <img
-        className="userimg"
-        src={"/images/" + user.profilePic}
-        alt="user"
-        width="100px"
-        height="100px"
-      />
+      {user.profilePic && (
+        <img
+          className="userimg"
+          src={"/images/" + user.profilePic}
+          alt="user"
+          width="100px"
+          height="100px"
+        />
+      )}
 
       <p className="username">{user.username}</p>
 

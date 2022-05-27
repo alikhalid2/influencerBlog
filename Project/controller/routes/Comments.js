@@ -11,7 +11,7 @@ router.get("/:id", async (req, res) => {
     const { userID, ...responce } = {
       username: user.username,
       profilePic: user.profilePic,
-      ...comment,
+      ...comment._doc,
     };
     res.status(200).json(responce);
   } catch (error) {
