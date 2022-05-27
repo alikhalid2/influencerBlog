@@ -10,6 +10,7 @@ export default function Post({ post }) {
           className="postImage"
           src={"/images/" + post.photo}
           alt="post"
+          onError={(event) => (event.target.src = "default.jpeg")}
           width="100%"
           height="280px"
         />

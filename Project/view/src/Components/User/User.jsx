@@ -27,6 +27,7 @@ export default function User({ user }) {
           className="userimg"
           src={"/images/" + user.profilePic}
           alt="user"
+          onError={(event) => (event.target.src = "default.jpeg")}
           width="100px"
           height="100px"
         />

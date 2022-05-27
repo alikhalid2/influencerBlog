@@ -57,6 +57,7 @@ export default function TopBar() {
                 className="topImg"
                 src={"/images/" + user.profilePic}
                 alt="personal"
+                onError={(event) => (event.target.src = "default.jpeg")}
                 width="40px"
                 height="40px"
               />

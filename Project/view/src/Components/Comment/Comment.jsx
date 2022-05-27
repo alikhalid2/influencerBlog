@@ -33,6 +33,7 @@ export default function Comment({ commentID }) {
             className="commentImage"
             src={"/images/" + comment.profilePic}
             alt="comment"
+            onError={(event) => (event.target.src = "default.jpeg")}
             width="40px"
             height="40px"
           />

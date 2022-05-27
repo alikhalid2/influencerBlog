@@ -33,10 +33,9 @@ function App() {
           path="/post/:postId"
           element={user ? <Single /> : <Register />}
         />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/about" element={<About/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-
+        <Route path="/admin" element={user ? <Admin /> : <Register />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={user ? <Contact /> : <Register />} />
       </Routes>
     </BrowserRouter>
   );
