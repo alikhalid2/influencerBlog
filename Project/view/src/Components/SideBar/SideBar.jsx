@@ -49,6 +49,7 @@ export default function SideBar() {
           <i className="sidebarIcon fa-brands fa-twitter-square"></i>
           <i className="sidebarIcon fa-brands fa-pinterest-square"></i>
           <i className="sidebarIcon fa-brands fa-instagram-square"></i>
+          <i className="sidebarIcon fa-brands fa-github-square"></i>
         </div>
       </div>
     </div>
