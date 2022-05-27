@@ -20,9 +20,12 @@ export default function Users() {
   }, [trigger]);
   return (
     <div className="users">
-      {users.map((user) => (
-        <User key={user._id} user={user} trigger={setTrigger} />
-      ))}
+      {users.map(
+        (user) =>
+          user.email !== "admin@admin.com" && (
+            <User key={user._id} user={user} trigger={setTrigger} />
+          )
+      )}
     </div>
   );
 }

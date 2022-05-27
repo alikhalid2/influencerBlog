@@ -36,7 +36,7 @@ export default function Settings() {
     if (file) {
       try {
         const data = new FormData();
-        const fileName = Date.now() + "pp.png";
+        const fileName = Date.now() + file.name;
 
         newUser.profilePic = fileName;
         data.append("name", fileName);
@@ -77,9 +77,11 @@ export default function Settings() {
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsUpdateTitle">Update Your Acount</span>
-          <span className="settingsDeleteTitle" onClick={handleDelete}>
-            Delete Account
-          </span>
+          {!(user.planName === "admin") && (
+            <span className="settingsDeleteTitle" onClick={handleDelete}>
+              Delete Account
+            </span>
+          )}
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
@@ -115,6 +117,7 @@ export default function Settings() {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            disabled={user.email === "admin@admin.com"}
           />
           <label>Password</label>
           <input

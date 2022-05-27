@@ -1,0 +1,35 @@
+.message {
+  margin: 20px;
+  /* width: 300px;
+    height: 180px; */
+
+  border-radius: 10px;
+  border: 1px solid grey;
+  font-family: "Lora", sans-serif;
+}
+.detals {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+.massageimg {
+  border-radius: 10px;
+  object-fit: cover;
+  margin: 5px;
+}
+.massagename {
+  margin-left: 20px;
+}
+.text {
+  /* flex-direction: column; */
+  display: flex;
+  text-align: center;
+  margin: 10px;
+  width: 300px;
+  /* height: 120px; */
+}
+.icondelet {
+  margin: 20px;
+  /* flex: 3;
+    justify-self: center; */
+}

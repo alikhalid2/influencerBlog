@@ -19,8 +19,9 @@ router.put("/:id", async (req, res) => {
         },
         { new: true }
       );
-      const plan = await Plan.findById(updatedUser.planID);
-      res.status(200).json({ ...updatedUser, ...plan, _id: updatedUser._id });
+      const user = updatedUser._doc;
+      const plan = await Plan.findById(user.planID);
+      res.status(200).json({ ...user, ...plan._doc, _id: user._id });
     } catch (err) {
       res.status(500).json(err);
     }

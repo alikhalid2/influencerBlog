@@ -3,7 +3,7 @@ const Message = require("../../model/Message");
 const User = require("../../model/User");
 
 // get specific comment
-router.get("/:id", async (req, res) => {
+router.get("/:id?", async (req, res) => {
   const messageID = req.params.id;
   if (messageID) {
     try {
@@ -43,4 +43,13 @@ router.post("/", async (req, res) => {
   }
 });
 
+// delete a comment
+router.delete("/:id", async (req, res) => {
+  try {
+    await Message.findByIdAndDelete(req.params.id);
+    res.status(200);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
 module.exports = router;
