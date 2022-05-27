@@ -1,5 +1,7 @@
 // importing React
-import React from "react";
+import React, { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { Context } from "../../Context/Context";
 
 // importing other components
 
@@ -7,17 +9,20 @@ import React from "react";
 import "./contact.css";
 
 export default function Contact() {
-  return (
+  const { user } = useContext(Context);
+  if (user.planName === "premium") {
+    return (
       <div>
-           <h1 className="title">comment </h1>
-      <div className="contact">
-         
-          <label >
-              <textarea type="text" id="comment" name="comment"></textarea>
+        <h1 className="title">comment </h1>
+        <div className="contact">
+          <label>
+            <textarea type="text" id="comment" name="comment"></textarea>
           </label>
           <button className="butsend">send</button>
+        </div>
       </div>
-    
-      </div>
-   );
+    );
+  } else {
+    return <Navigate to="/" />;
+  }
 }

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../../model/User");
 const Post = require("../../model/Post");
 const bcrypt = require("bcrypt");
+const Plan = require("../../model/Plan");
 
 //UPDATE
 router.put("/:id", async (req, res) => {
@@ -18,7 +19,8 @@ router.put("/:id", async (req, res) => {
         },
         { new: true }
       );
-      res.status(200).json(updatedUser);
+      const plan = await Plan.findById(updatedUser.planID);
+      res.status(200).json({ ...updatedUser, ...plan, _id: updatedUser._id });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -34,6 +36,7 @@ router.delete("/:id", async (req, res) => {
       const user = await User.findById(req.params.id);
       try {
         await Post.deleteMany({ userID: user._id });
+        await Plan.findByIdAndDelete(user.planID);
         await User.findByIdAndDelete(req.params.id);
         res.status(200).json("User has been deleted...");
       } catch (err) {
@@ -51,8 +54,9 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
+    const plan = await Plan.findById(user.postID);
     const { password, ...others } = user._doc;
-    res.status(200).json(others);
+    res.status(200).json({ ...others, ...plan, _id: others._id });
   } catch (err) {
     res.status(500).json(err);
   }

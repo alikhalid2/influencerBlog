@@ -12,14 +12,15 @@ import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import About from "./Pages/About/About.jsx";
 import Contact from "./Pages/Contact/Contact.jsx";
-
-// import style sheet
-import "./app.css";
 import { Context } from "./Context/Context.js";
 import Admin from "./Pages/Admin/Admin.jsx";
 
+// import style sheet
+import "./app.css";
+
 function App() {
   const { user } = useContext(Context);
+
   return (
     <BrowserRouter>
       <TopBar />

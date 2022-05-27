@@ -1,13 +1,37 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../Context/Actions";
 import { Context } from "../../Context/Context";
+import axios from "axios";
 import "./topbar.css";
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logout());
+  };
+  const haveChance = async () => {
+    try {
+      const res = await axios.put("/plans/reset/" + user.planID);
+      if (res.data && Object.keys(res.data).length > 0) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleWrite = async () => {
+    if (user.planName === "admin") {
+      navigate("/write");
+    } else if (user.planName === "premium") {
+      if (user.postNumber > 0 || (await haveChance())) {
+        navigate("/write");
+      } else {
+        alert("You Writed 2 posts already!!!");
+      }
+    }
   };
   return (
     <React.Fragment>
@@ -31,21 +55,26 @@ export default function TopBar() {
                 ABOUT
               </Link>
             </li>
-            <li className="topListItem">
-              <Link to="/contact" className="link">
-                CONTACT
-              </Link>
-            </li>
-            <li className="topListItem">
-              <Link to="/write" className="link">
-                WRITE
-              </Link>
-            </li>
-            <li className="topListItem">
-              <Link to="/admin" className="link">
-                ADMIN
-              </Link>
-            </li>
+            {user && user.planName === "premium" && (
+              <li className="topListItem">
+                <Link to="/contact" className="link">
+                  CONTACT
+                </Link>
+              </li>
+            )}
+            {user &&
+              (user.planName === "admin" || user.planName === "premium") && (
+                <li className="topListItem" onClick={handleWrite}>
+                  WRITE
+                </li>
+              )}
+            {user && user.planName === "admin" && (
+              <li className="topListItem">
+                <Link to="/admin" className="link">
+                  ADMIN
+                </Link>
+              </li>
+            )}
             <li className="topListItem" onClick={handleLogout}>
               {user && "LOGOUT"}
             </li>

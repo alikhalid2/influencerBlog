@@ -16,9 +16,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    plan: {
+    planID: {
       type: String,
-      required: true
+      required: true,
     },
     profilePic: {
       type: String,

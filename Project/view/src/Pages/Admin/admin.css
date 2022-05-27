@@ -1,11 +1,10 @@
 .admin {
   display: flex;
+  height: calc(100vh - 50px);
 }
 .adminSidebar {
   flex: 3;
   background-color: teal;
-
-  height: calc(100vh - 50px);
 }
 
 .adminSidebar p {
@@ -13,6 +12,20 @@
   padding: 20px;
   cursor: auto;
 }
+
+.adminContent {
+  overflow: scroll;
+  flex: 9;
+}
+.adminContent::-webkit-scrollbar {
+  display: none;
+}
+
+.adminContent {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .adminNotSelected {
   color: white !important;
   cursor: pointer !important;

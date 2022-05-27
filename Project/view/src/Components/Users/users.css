@@ -1,5 +1,4 @@
 .users {
-  flex: 9;
   display: flex;
   align-self: start;
   flex-wrap: wrap;

@@ -74,6 +74,7 @@ export default function SinglePost() {
             alt="single post"
             width="100%"
             height="300px"
+            onError={(event) => (event.target.src = "/default.jpeg")}
           />
         )}
         {updateMode ? (
