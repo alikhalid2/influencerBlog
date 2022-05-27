@@ -3,4 +3,21 @@
 }
 .adminSidebar {
   flex: 3;
+  background-color: teal;
+
+  height: calc(100vh - 50px);
+}
+
+.adminSidebar p {
+  text-align: center;
+  padding: 20px;
+  cursor: auto;
+}
+.adminNotSelected {
+  color: white !important;
+  cursor: pointer !important;
+}
+.adminSelect {
+  background-color: white;
+  color: black !important;
 }

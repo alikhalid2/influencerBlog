@@ -1,34 +1,22 @@
-.user{
-    flex-direction: row;
-    margin: 20px;
-    width: 300px;
-    display: flex;
-   border-radius: 10px;
-    border: 2px solid black;
-    font-family: "Lora", sans-serif;
-
+.user {
+  margin: 20px;
+  width: 250px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid grey;
+  font-family: "Lora", sans-serif;
 }
 
 .userimg {
-    border-radius: 10px;
-    object-fit: cover;
-margin: 5px;
-
-
-  }
-  .username{
-margin-left: 20px;
-/* flex: 6; */
-display: flex;
-align-items: center;
-
-
-  }
-  .deliticon{
-    /* flex: 3; */
-    display: flex;
-    align-items: center;
-
-
-
-  }
+  border-radius: 10px;
+  object-fit: cover;
+  margin: 5px;
+}
+.username {
+  margin-left: 20px;
+}
+.deliticon {
+  /* flex: 3; */
+}

@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
+const commentsRoute = require("./routes/Comments");
 const categoryRoute = require("./routes/categories");
+const statisticsRoute = require("./routes/statistics");
 const multer = require("multer");
 const path = require("path");
 
@@ -33,6 +35,11 @@ const storage = multer.diskStorage({
   },
 });
 
+// statistics
+const statistics = {};
+const fetchStatistics = async () => {};
+
+// upload
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
@@ -42,7 +49,8 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
-
+app.use("/api/statistics", statisticsRoute);
+app.use("/api/comments", commentsRoute);
 app.listen("5000", () => {
   console.log("Backend is running.");
 });

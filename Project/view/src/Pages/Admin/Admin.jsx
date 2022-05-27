@@ -1,25 +1,48 @@
 // importing React
-import React, { useState } from "react";
+import React from "react";
 
 // importing other components
 import Users from "../../Components/Users/Users.jsx";
 import Statistics from "../../Components/Statistics/Statistics.jsx";
 import Messages from "../../Components/Messages/Messages.jsx";
+import { Link, useLocation } from "react-router-dom";
 // importing style sheet
 import "./admin.css";
 
 export default function Admin() {
-  const [choice, setChoice] = useState("USERS");
+  const choice = useLocation().search.split("=")[1];
   return (
     <div className="admin">
       <div className="adminSidebar">
-        <p onClick={() => setChoice("STATISTICS")}>STATISTICS</p>
-        <p onClick={() => setChoice("USERS")}>USERS</p>
-        <p onClick={() => setChoice("MESSAGES")}>MESSAGES</p>
+        <Link to="/admin?choice=statistics" className="link">
+          <p
+            className={
+              choice === "statistics" ? "adminSelect" : "adminNotSelected"
+            }
+          >
+            STATISTICS
+          </p>
+        </Link>
+        <Link to="/admin?choice=users" className="link">
+          <p
+            className={choice === "users" ? "adminSelect" : "adminNotSelected"}
+          >
+            USERS
+          </p>
+        </Link>
+        <Link to="/admin?choice=messeges" className="link">
+          <p
+            className={
+              choice === "messeges" ? "adminSelect" : "adminNotSelected"
+            }
+          >
+            MESSAGES
+          </p>
+        </Link>
       </div>
-      {choice === "STATISTICS" ? (
+      {choice === "statistics" ? (
         <Statistics />
-      ) : choice === "USERS" ? (
+      ) : choice === "users" ? (
         <Users />
       ) : (
         <Messages />

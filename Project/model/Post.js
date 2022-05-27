@@ -25,13 +25,13 @@ const PostSchema = new mongoose.Schema(
     },
     comments: {
       type: Array,
-      required: false,
+      required: true,
       default: [],
     },
     views: {
       type: Number,
       default: 0,
-      required: false,
+      required: true,
     },
   },
   { timestamps: true }

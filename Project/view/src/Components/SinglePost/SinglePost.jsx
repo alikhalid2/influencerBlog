@@ -14,7 +14,7 @@ import "./singlePost.css";
 export default function SinglePost() {
   const location = useLocation();
   const postID = location.pathname.split("/")[2];
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState({ comments: [] });
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
@@ -64,7 +64,7 @@ export default function SinglePost() {
     };
     fetchPost(postID);
   }, [postID]);
-
+  console.log(post);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
@@ -131,9 +131,11 @@ export default function SinglePost() {
             </button>
           </React.Fragment>
         ) : (
-          <p className="singlePostDesc">{post.desc}</p>
+          <React.Fragment>
+            <p className="singlePostDesc">{post.desc}</p>
+            <Comments comments={post.comments} postID={post._id} />
+          </React.Fragment>
         )}
-        <Comments />
       </div>
     </div>
   );
